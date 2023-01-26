@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node ./src/app.js",
+    "dev": "nodemon --exec babel-node ./src/index.js",
     "build": "rimraf dist && babel ./src --out-dir dist ",
-    "start": "node ./dist/index.js "
+    "start-dev": "node ./dist/index.js ",
+    "start": "pm2 start ./dist/index.js ",
+    "stop": "pm2 stop ./dist/index.js ",
+    "restart": "pm2 restart ./dist/index.js "
   },
   "keywords": [
     "apollo",
@@ -21,11 +24,13 @@
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
+    "express-rate-limit": "^6.7.0",
     "express-session": "^1.17.3",
     "express-validator": "^6.14.3",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "helmet": "^6.0.1",
+    "hpp": "^0.2.3",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0",
     "nodemon": "^2.0.20",
@@ -34,6 +39,7 @@
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.1",
     "socket.io": "^4.5.4",
+    "xss-clean": "^0.1.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
