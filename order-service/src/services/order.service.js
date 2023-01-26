@@ -4,6 +4,7 @@ import { Request, Response, Next } from "express";
 let channel;
 
 class RabbitMQ {
+  //create chn
   async Create(chann) {
     try {
       await channel.sendToQueue(
@@ -14,7 +15,7 @@ class RabbitMQ {
       console.log("Error in Connecting RabbitMQ!", error);
     }
   }
-
+//connect amqp
   async Conect() {
     try {
       const amqpServer = "amqp://localhost:5672";
@@ -28,6 +29,7 @@ class RabbitMQ {
       process.exit(1);
     }
   }
+  //amqp consum
   async Consum(ch) {
     let Buffer;
     let next;

@@ -10,7 +10,7 @@ export default {
   Query: {
     //getById
     orderId: async (parent, args, { req }) => {
-      // await authHeader(req);
+       await authHeader(req);
       try {
         const Order = await Order.findById({ _id: args.id });
         return Order;
@@ -20,7 +20,7 @@ export default {
     },
     //getAll
     orders: async (parent, args, { req }) => {
-      // await authHeader(req);
+      await authHeader(req);
       try {
         const Orders = await Order.find({});
         return Orders;
@@ -32,7 +32,7 @@ export default {
   Mutation: {
     // Insert
     createOrder: async (paren, { input }, { req }) => {
-      //await authHeader(req);
+      await authHeader(req);
       let data = input;
       try {
         if (!data) {
@@ -47,7 +47,7 @@ export default {
     },
     //delete
     deleteOrder: async (parent, { id }, { req }) => {
-      //await authHeader(req);
+      await authHeader(req);
       try {
         const Order = await Order.deleteOne({ _id: id });
         return { message: "Successful Delete Item" };
