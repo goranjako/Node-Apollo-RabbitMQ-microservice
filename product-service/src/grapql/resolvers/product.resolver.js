@@ -10,7 +10,7 @@ export default {
   Query: {
     //getById
     productId: async (parent, args, { req }) => {
-     // await authHeader(req);
+      await authHeader(req);
       try {
         const product = await Product.findById({ _id: args.id });
         return product;
@@ -20,7 +20,7 @@ export default {
     },
     //getAll
     products: async (parent, args, { req }) => {
-     // await authHeader(req);
+      await authHeader(req);
       try {
         const products = await Product.find({});
         return products;
@@ -32,7 +32,7 @@ export default {
   Mutation: {
    // Insert
    createProduct: async (paren, { input }, {req}) => {
-    //await authHeader(req);
+    await authHeader(req);
     try {
       await productValid.validate(input, { abortEarly: false });
       const product = new Product({
@@ -50,7 +50,7 @@ export default {
   },
   //delete
   deleteProduct: async (parent, { id }, { req }) => {
-    //await authHeader(req);
+    await authHeader(req);
     try {
       const product = await Product.deleteOne({ _id: id });
       return { message: "Successful Delete Item" };
@@ -60,7 +60,7 @@ export default {
   },
   //update
   updateProduct: async (parent, { id, input }, { req }) => {
-    //await authHeader(req);
+    await authHeader(req);
     try {
       await productValid.validate(input, { abortEarly: false });
       const product = await Product.findById({ _id: id }).exec();

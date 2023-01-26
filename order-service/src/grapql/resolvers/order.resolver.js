@@ -11,7 +11,7 @@ export default {
   Query: {
     //getById
     orderId: async (parent, args, { req }) => {
-     // await authHeader(req);
+     await authHeader(req);
       try {
         const Order = await Order.findById({ _id: args.id });
         return Order;
@@ -21,7 +21,7 @@ export default {
     },
     //getAll
     orders: async (parent, args, { req }) => {
-     // await authHeader(req);
+     await authHeader(req);
       try {
         const Orders = await Order.find({});
         return Orders;
@@ -34,7 +34,7 @@ export default {
    // Insert
   //delete
   deleteOrder: async (parent, { id }, { req }) => {
-    //await authHeader(req);
+    await authHeader(req);
     try {
       const Order = await Order.deleteOne({ _id: id });
       return { message: "Successful Delete Item" };

@@ -12,7 +12,7 @@ export default {
   Query: {
     //getById
     userId: async (parent, args, { req }) => {
-     // await authHeader(req);
+      await authHeader(req);
       try {
         const user = await User.findById({ _id: args.id });
         return user;
@@ -21,7 +21,7 @@ export default {
       }
     },
     users: async (parent, args, { req }) => {
-     // await authHeader(req);
+      await authHeader(req);
       try {
         const user = await User.find({});
         return user;
