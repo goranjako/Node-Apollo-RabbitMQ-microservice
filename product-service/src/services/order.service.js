@@ -3,6 +3,7 @@ import amqp from "amqplib";
 
 let channel;
 class RabbitMQ {
+  //amqp connect
   async Conect() {
     try {
       const amqpServer = "amqp://localhost:5672";
@@ -15,7 +16,7 @@ class RabbitMQ {
       process.exit(1);
     }
   }
-
+//create amqlib message
   async Create(chann, data) {
     try {
       await channel.sendToQueue(chann, Buffer.from(JSON.stringify({ data })));
@@ -23,7 +24,7 @@ class RabbitMQ {
       console.log("Error in Connecting RabbitMQ!", error);
     }
   }
-
+//consume amqlib message
   async Consume(chann, res) {
     try {
       channel.consume(chann, async (data) => {
